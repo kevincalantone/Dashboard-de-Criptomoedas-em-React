@@ -1,0 +1,1 @@
+// A linha ou card com as informações da moeda.

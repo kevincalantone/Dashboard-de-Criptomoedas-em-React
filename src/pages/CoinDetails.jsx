@@ -1,0 +1,1 @@
+// Detalhes técnicos de uma moeda específica.

@@ -1,0 +1,1 @@
+//Onde as moedas salvas pelo usuário aparecem

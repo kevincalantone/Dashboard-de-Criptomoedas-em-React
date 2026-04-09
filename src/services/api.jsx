@@ -1,0 +1,1 @@
+// Configuração central do Axios para falar com a CoinGecko.

@@ -1,0 +1,1 @@
+//Um componente visual para o estado de espera.
