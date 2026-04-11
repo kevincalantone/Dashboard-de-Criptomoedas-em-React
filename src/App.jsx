@@ -17,8 +17,9 @@ function App() {
           <Navbar/>
           <Routes>
             <Route path='/' element={<Home/>}/>
-            <Route path='/coin/:id' element={<Datails/>}/>
             <Route path='/favorites' element={<Favorites/>}/>
+            {/* O :id é um parâmetro dinâmico para sabermos qual moeda abrir */}
+            <Route path='/coin/:id' element={<Datails/>}/>
           </Routes>
       </BrowserRouter>
     </>
