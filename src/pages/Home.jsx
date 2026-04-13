@@ -1,3 +1,4 @@
+import CoinCard from "../components/CoinCard"
 import useFetch from "../hooks/useFetch"
 
 
@@ -11,14 +12,10 @@ function Home(){
 
     return(
         <main className="container">
-            <h1>Cripto Atualizadas</h1>
-            <div className="coin-list">
+            <h1 className="title">Mercado de Cripto</h1>
+            <div className="coin-grid">
                 {data && data.map(coin =>(
-                    <div key={coin.id} className="coin-item">
-                        <img src={coin.image} alt={coin.name} width={30} />
-                        <span>{coin.name}</span>
-                        <span> U$ {coin.current_price.toLocaleString()}</span>
-                    </div>
+                  <CoinCard key={coin.id} coin={coin} />
                 ))}
             </div>
         </main>
