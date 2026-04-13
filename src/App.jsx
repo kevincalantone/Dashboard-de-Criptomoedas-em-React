@@ -11,18 +11,16 @@ function App() {
 
 
   return (
-      <>
+    <div>
       <BrowserRouter>
-          {/* A Navbar fica fora das Routes para aparecer em todas as páginas */}
           <Navbar/>
           <Routes>
             <Route path='/' element={<Home/>}/>
             <Route path='/favorites' element={<Favorites/>}/>
-            {/* O :id é um parâmetro dinâmico para sabermos qual moeda abrir */}
             <Route path='/coin/:id' element={<CoinDetails/>}/>
           </Routes>
       </BrowserRouter>
-    </>
+    </div>
   )
 }
 

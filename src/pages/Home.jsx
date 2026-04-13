@@ -1,3 +1,9 @@
-//vitrine principal com o ranking das criptos.
+function Home(){
+    return(
+        <div>
+            <h1>teste</h1>
+        </div>
+    )
+}
 
-<h1>Ola</h1>
+export default Home
