@@ -8,6 +8,10 @@ function Home(){
        '/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false'
     )
 
+
+    // --- NOVO: Estado para armazenar o texto da busca ---
+    const [search, setSearch] = useState('')
+
     const [favorites, setFavorites] = useState(() =>{
         const saved = localStorage.getItem('@cripto-favs')
         return saved ? JSON.parse(saved) : []
@@ -28,6 +32,10 @@ function Home(){
         }
     }
 
+    //lista filtrada baseada no que o usuário digita
+    const filteredCoins = data?.filter(coin =>
+        coin.name.toLowerCase().includes(search.toLowerCase())
+    )
 
     if (loading) return <h1 className="loader">Carregando moedas...</h1>
     if (error) return <h1 className="error">Erro ao buscar dados da API</h1>
@@ -35,8 +43,20 @@ function Home(){
     return(
         <main className="container">
             <h1 className="title">Mercado de Cripto</h1>
+            
+            <div className="search-container">
+                <input 
+                type="text"
+                placeholder="Buscar moeda pelo nome..." 
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                />
+            </div>
+
+
+
             <div className="coin-grid">
-                {data && data.map(coin =>(
+                {filteredCoins && filteredCoins.map(coin =>(
                   <CoinCard 
                    key={coin.id}
                    coin={coin}
