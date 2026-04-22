@@ -21,9 +21,6 @@ function Home(){
         localStorage.setItem('@cripto-favs', JSON.stringify(favorites))
     }, [favorites])
 
-
-
-
     function handleFav(id){
         if (favorites.includes(id)){
             setFavorites(favorites.filter(fav =>fav !== id))
@@ -52,8 +49,6 @@ function Home(){
                 onChange={(e) => setSearch(e.target.value)}
                 />
             </div>
-
-
 
             <div className="coin-grid">
                 {filteredCoins && filteredCoins.map(coin =>(
