@@ -1,15 +1,18 @@
-// O menu de navegação.
-import {Link} from "react-router-dom"
+import { NavLink } from 'react-router-dom'
 
 const Navbar = () => {
   return (
-    <nav>
-      <div className="nav-container">
-        <Link to={"/"} className="nav-logo">CriptoDash</Link>
-        <div className="nav-links">
-          <Link to={"/"}>Inicio</Link>
-          <Link to={"/favorites"}>Meus Favoritos</Link>
-        </div>
+    <nav className="navbar">
+      <div className="navbar-logo">
+        <NavLink to="/">CriptoDash</NavLink>
+      </div>
+      <div className="navbar-links">
+        <NavLink to="/" end>
+          Início
+        </NavLink>
+        <NavLink to="/favorites">
+          Meus Favoritos
+        </NavLink>
       </div>
     </nav>
   )
