@@ -40,7 +40,7 @@ function Home(){
 
     return(
         <main className="container">
-            <h1 className="title">Mercado de Cripto</h1>
+            <h1 className="title">Radar Cripto</h1>
             
             <SearchBar value={search} onChange={setSearch}/>
 

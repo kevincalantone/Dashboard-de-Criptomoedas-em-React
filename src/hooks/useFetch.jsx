@@ -1,31 +1,42 @@
-//gerenciar o "carregando" automaticamente.
+import { useState, useEffect } from 'react';
 
-import { useState, useEffect } from "react";
-import api from '../services/api'
+const useFetch = (url) => {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-export function useFetch(url){
-    const [data, setData] = useState(null)
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
+  useEffect(() => {
+    if (!url) return;
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try{
-                setLoading(true)
-                // O "await" trava a execução aqui até a API responder
-                const response = await api.get(url)
-                setData(response.data)
-            }catch(err){
-                setError(err)
-            }finally{
-                setLoading(false)
-            }
+    const fetchData = async () => {
+      setLoading(true);
+      try {
+        const response = await fetch(`https://api.coingecko.com/api/v3${url}`, {
+          method: 'GET',
+          headers: {
+            'accept': 'application/json',
+            // Sua chave configurada aqui:
+            'x-cg-demo-api-key': 'CG-EFgo5EnGP2HtuUcisobSNnht'
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error('Erro ao buscar dados da API');
         }
-        fetchData()
-        
-    }, [url]);
 
-    return {data, loading, error}
-}
+        const result = await response.json();
+        setData(result);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-export default useFetch
+    fetchData();
+  }, [url]);
+
+  return { data, loading, error };
+};
+
+export default useFetch;
