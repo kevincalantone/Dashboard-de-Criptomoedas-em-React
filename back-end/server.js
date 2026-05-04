@@ -10,7 +10,7 @@ app.use(express.json());
 
 const PORT = 3001;
 
-// Rota
+// Rota para buscar as criptomoedas
 app.get('/api/coins', async (req, res) => {
   try {
     const response = await axios.get('https://api.coingecko.com/api/v3/coins/markets', {
@@ -22,11 +22,13 @@ app.get('/api/coins', async (req, res) => {
         sparkline: false
       },
       headers: {
-        'x-cg-demo-api-key': process.env.VITE_CG_API_KEY // A chave está segura aqui no servidor
+        // A chave agora vem do .env do back-end com o novo nome
+        'x-cg-demo-api-key': process.env.COINGECKO_API_KEY 
       }
     });
     res.json(response.data);
   } catch (error) {
+    console.error('Erro na requisição:', error.message);
     res.status(500).json({ error: 'Erro ao buscar dados da API' });
   }
 });
