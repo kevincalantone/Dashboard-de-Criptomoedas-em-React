@@ -20,20 +20,13 @@ function Home(){
     useEffect(() => {
         async function loadCoins() {
             try {
-                setLoading(true)
-              
-                const response = await api.get('/coins/markets', {
-                    params: {
-                        vs_currency: 'usd',
-                        order: 'market_cap_desc',
-                        per_page: 10,
-                        page: 1,
-                        sparkline: false
-                    }
-                })
-                setData(response.data)
-                setError(false)
-            } catch (err) {
+            setLoading(true)
+        
+            const response = await api.get('/coins') 
+            
+            setData(response.data)
+            setError(false)
+        }catch (err) {
                 console.error(err)
                 setError(true)
             } finally {
